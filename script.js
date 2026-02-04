@@ -204,8 +204,27 @@ function adjustHeroPadding() {
     }
 }
 
+// Theme Text Toggle Functionality
+// Loading Screen
+function initLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    const body = document.body;
+
+    // Add loading class to body
+    body.classList.add('loading');
+
+    // Hide loading screen after page loads
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            loadingScreen.classList.add('hidden');
+            body.classList.remove('loading');
+        }, 500); // Small delay for smooth transition
+    });
+}
+
 // Call this function and also on window resize
 document.addEventListener('DOMContentLoaded', () => {
+    initLoadingScreen();
     adjustHeroPadding();
     window.addEventListener('resize', adjustHeroPadding);
 });
